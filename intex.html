@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bungalows Casa Tabachines</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="lang-en min-h-screen">
+
+    <!-- Header con botón de idioma -->
+    <header class="bg-white/95 backdrop-blur-sm shadow-sm sticky top-0 z-50 border-b border-amber-200">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 rounded-full wood-bg flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                    </svg>
+                </div>
+                <h1 class="text-xl font-bold wood-text tracking-tight">Casa Tabachines</h1>
+            </div>
+            <button id="lang-toggle" class="px-3 py-1.5 text-xs wood-text border border-amber-300 rounded-full hover:bg-amber-50 transition duration-150 flex items-center space-x-1" onclick="toggleLanguage()">
+                <i class="fas fa-language text-sm"></i>
+                <span class="content" lang="en">Español</span>
+                <span class="content" lang="es">English</span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Sección principal -->
+        <section class="wood-bg text-white py-20 text-center rounded-b-3xl shadow-xl mb-12">
+            <div class="container mx-auto px-6">
+                <p class="text-sm opacity-80 mb-2">
+                    <span class="content" lang="en">Your next perfect escape</span>
+                    <span class="content" lang="es">Tu próxima escapada perfecta</span>
+                </p>
+                <h2 class="text-5xl md:text-7xl font-extrabold mb-6">
+                    <span class="content" lang="en">Simple Living. <br class="sm:hidden">Natural Comfort.</span>
+                    <span class="content" lang="es">Vida Sencilla. <br class="sm:hidden">Confort Natural.</span>
+                </h2>
+                <a href="#bungalows" class="btn-secondary bg-white text-amber-800 hover:bg-amber-100 mt-4">
+                    <span class="content" lang="en">Discover Our Bungalows</span>
+                    <span class="content" lang="es">Descubre Nuestros Bungalows</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Sección de bungalows -->
+        <section id="bungalows" class="container mx-auto px-4 md:px-8 py-16">
+            <h3 class="text-4xl font-bold text-center mb-12 wood-text">
+                <span class="content" lang="en">Our Two Charming Rentals</span>
+                <span class="content" lang="es">Nuestros Dos Encantadores Alojamientos</span>
+            </h3>
+
+            <!-- Bungalow 1 - Obelisco -->
+            <div class="grid md:grid-cols-2 gap-10 items-center mb-20 p-6 wood-accent/20 rounded-2xl card-shadow">
+                <div class="rounded-xl overflow-hidden shadow-lg border-4 border-amber-700/50 relative">
+                    <div class="carousel" data-carousel="1">
+                        <div class="carousel-images">
+                            <img src="images/Obelisco/1.webp" alt="Bungalow 1 Interior" class="carousel-image active">
+                            <img src="images/Obelisco/2.webp" alt="Bungalow 1 Cocina" class="carousel-image">
+                            <img src="images/Obelisco/3.webp" alt="Bungalow 1 Baño" class="carousel-image">
+                        </div>
+                        <button class="carousel-prev">‹</button>
+                        <button class="carousel-next">›</button>
+                        <div class="carousel-dots">
+                            <span class="dot active"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-lg">
+                    <h4 class="text-3xl font-semibold mb-3 wood-text">
+                        <span class="content" lang="en">Bungalow 1: Obelisk</span>
+                        <span class="content" lang="es">Bungalow 1: Obelisco</span>
+                    </h4>
+                    <p class="mb-4">
+                        <span class="content" lang="en">Designed for a peaceful retreat, this bungalow features a plush double bed, a stylish kitchenette with tiled accents, and gorgeous sea views, designed for 4 guests Aprox.</span>
+                        <span class="content" lang="es">Diseñado para un retiro de paz, este bungalow cuenta con una cómoda cama doble, una elegante cocina americana con detalles de azulejos y acceso hermosas vistas al mar, diseñado para 4 personas Aprox.</span>
+                    </p>
+                    <ul class="list-disc list-inside space-y-1 pl-4 wood-text text-base mb-6">
+                        <li class="content" lang="en">Two Twin Beds (Queen Size)</li>
+                        <li class="content" lang="en">Charming Kitchenette Area</li>
+                        <li class="content" lang="en">Beautiful Ocean View</li>
+                        <li class="content" lang="es">Dos Camas Matrimoniales (Queen Size)</li>
+                        <li class="content" lang="es">Encantadora Área de Cocina Americana</li>
+                        <li class="content" lang="es">Encantadora Vista al Mar</li>
+                    </ul>
+                    <!-- Nuevo Botón "See more" para Bungalow 1 -->
+                    <a href="SubPages/PhotoGalery/Obelisk.html" class="btn-primary inline-flex items-center space-x-2">
+                        <i class="fas fa-camera"></i>
+                        <span class="content" lang="en">See more photos</span>
+                        <span class="content" lang="es">Ver más fotos</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Bungalow 2 - Bugambilia -->
+            <div class="grid md:grid-cols-2 gap-10 items-center p-6 wood-accent/20 rounded-2xl card-shadow">
+                <div class="text-lg order-2 md:order-1">
+                    <h4 class="text-3xl font-semibold mb-3 wood-text">
+                        <span class="content" lang="en">Bungalow 2: Bugambilia</span>
+                        <span class="content" lang="es">Bungalow 2: Bugambilia</span>
+                    </h4>
+                    <p class="mb-4">
+                        <span class="content" lang="en">This slightly smaller unit is ideal for a small family or friends traveling together. It features two comfortable twin beds and direct access to the main veranda and entrance area.</span>
+                        <span class="content" lang="es">Esta unidad un poco más pequeña es ideal para familias pequeñas o amigos que viajan juntos. Cuenta con dos cómodas camas matrimoniales y acceso directo a la terraza principal y al área de entrada.</span>
+                    </p>
+                    <ul class="list-disc list-inside space-y-1 pl-4 wood-text text-base mb-6">
+                        <li class="content" lang="en">Two Twin Beds (Queen Size)</li>
+                        <li class="content" lang="en">Spacious Layout</li>
+                        <li class="content" lang="en">Main Veranda Access</li>
+                        <li class="content" lang="es">Dos Camas Matrimoniales (Queen Size)</li>
+                        <li class="content" lang="es">Distribución Espaciosa</li>
+                        <li class="content" lang="es">Acceso a la Terraza Principal</li>
+                    </ul>
+                    <!-- Nuevo Botón "See more" para Bungalow 2 -->
+                    <a href="SubPages/PhotoGalery/Bugambilia.html" class="btn-primary inline-flex items-center space-x-2">
+                        <i class="fas fa-camera"></i>
+                        <span class="content" lang="en">See more photos</span>
+                        <span class="content" lang="es">Ver más fotos</span>
+                    </a>
+                </div>
+
+                <div class="rounded-xl overflow-hidden shadow-lg border-4 border-amber-700/50 order-1 md:order-2 relative">
+                    <div class="carousel" data-carousel="2">
+                        <div class="carousel-images">
+                            <img src="images/Bugambilia/1.webp" alt="Bungalow 2 Interior" class="carousel-image active">
+                            <img src="images/Bugambilia/2.webp" alt="Bungalow 2 Dormitorio" class="carousel-image">
+                            <img src="images/Bugambilia/3.webp" alt="Bungalow 2 Baño" class="carousel-image">
+                        </div>
+                        <button class="carousel-prev">‹</button>
+                        <button class="carousel-next">›</button>
+                        <div class="carousel-dots">
+                            <span class="dot active"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de comodidades -->
+        <section class="wood-bg text-white py-16">
+            <div class="container mx-auto px-4 md:px-8">
+                <h3 class="text-4xl font-bold text-center mb-10">
+                    <span class="content" lang="en">Shared Comforts</span>
+                    <span class="content" lang="es">Comodidades Compartidas</span>
+                </h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <!-- Aire Acondicionado -->
+                    <div class="p-4 wood-accent rounded-xl text-amber-900 shadow-md">
+                        <i class="fas fa-snowflake text-4xl mb-2"></i>
+                        <p class="font-semibold content" lang="en">Air Conditioner</p>
+                        <p class="font-semibold content" lang="es">Aire Acondicionado</p>
+                    </div>
+                    <!-- Jardines -->
+                    <div class="p-4 wood-accent rounded-xl text-amber-900 shadow-md">
+                        <i class="fas fa-tree text-4xl mb-2"></i>
+                        <p class="font-semibold content" lang="en">Beautiful Gardens</p>
+                        <p class="font-semibold content" lang="es">Hermosos Jardines</p>
+                    </div>
+                    <!-- WiFi -->
+                    <div class="p-4 wood-accent rounded-xl text-amber-900 shadow-md">
+                        <i class="fas fa-wifi text-4xl mb-2"></i>
+                        <p class="font-semibold content" lang="en">Free WiFi</p>
+                        <p class="font-semibold content" lang="es">WiFi Gratuito</p>
+                    </div>
+                    <!-- Agua Caliente -->
+                    <div class="p-4 wood-accent rounded-xl text-amber-900 shadow-md">
+                        <i class="fas fa-shower text-4xl mb-2"></i>
+                        <p class="font-semibold content" lang="en">Hot Water Showers</p>
+                        <p class="font-semibold content" lang="es">Regaderas con Agua Caliente</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de contacto -->
+        <section id="contact" class="container mx-auto px-4 md:px-8 py-16">
+            <h3 class="text-4xl font-bold text-center mb-10 wood-text">
+                <span class="content" lang="en">Connect With Us</span>
+                <span class="content" lang="es">Contáctanos</span>
+            </h3>
+            <div class="max-w-xl mx-auto p-8 wood-accent rounded-2xl card-shadow">
+                <div class="space-y-6 text-center text-lg wood-text">
+                    <div>
+                        <p class="font-semibold">
+                            <span class="content" lang="en">Email Inquiries:</span>
+                            <span class="content" lang="es">Consultas por Email:</span>
+                        </p>
+                        <p class="text-xl font-medium text-amber-800">Licenciada_Arellano@hotmail.com</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold">
+                            <span class="content" lang="en">Phone/WhatsApp:</span>
+                            <span class="content" lang="es">Teléfono/WhatsApp:</span>
+                        </p>
+                        <p class="text-xl font-medium text-amber-800">+52 (322) 199-8898</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold mb-2">
+                            <span class="content" lang="en">Location:</span>
+                            <span class="content" lang="es">Ubicación:</span>
+                        </p>
+                        <p>
+                            <span class="content" lang="en">Calle Mirarmar #9, Ricon De Guayabitos, Fraccionamiento Rincon de Miramar</span>
+                            <span class="content" lang="es">Calle Mirarmar #9, Ricon De Guayabitos, Fraccionamiento Rincon de Miramar</span>
+                        </p>
+                        <a href="https://www.google.com/maps?q=21.0198806,-105.2755461&z=17&hl=en" class="text-sm underline text-amber-800 hover:text-amber-900 mt-2 block">
+                            <span class="content" lang="en">View on Map</span>
+                            <span class="content" lang="es">Ver en el Mapa</span>
+                        </a>
+                    </div>
+
+                    <a href="mailto:Licenciada_Arellano@hotmail.com" class="btn-primary mt-6 inline-block">
+                        <span class="content" lang="en">Book Now!!</span>
+                        <span class="content" lang="es">Reserva Ahora!!</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="wood-bg/90 text-amber-900 mt-12 py-6 text-center">
+        <div class="container mx-auto px-4">
+            <p class="text-sm mb-2">&copy; 2025 Casa Tabachines. All Rights Reserved. |
+                <span class="content" lang="en">Built with a love for natural wood.</span>
+                <span class="content" lang="es">Construido con amor por la madera natural.</span>
+            </p>
+            <div class="mt-2">
+                <a href="https://github.com/Karataso" target="_blank" class="inline-flex items-center text-xs text-amber-800 hover:text-amber-700 transition duration-150">
+                    <i class="fab fa-github mr-1 text-base"></i>
+                    Designed by: Karataso
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

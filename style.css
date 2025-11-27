@@ -1,0 +1,154 @@
+/* Estilos generales */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #FDFCEF;
+    color: #4A2E19;
+}
+
+.wood-bg {
+    background-color: #926E51;
+}
+
+.wood-accent {
+    background-color: #B8A188;
+}
+
+.wood-text {
+    color: #7B4C29;
+}
+
+/* Manejo de idiomas */
+.content[lang="es"], .content[lang="en"] {
+    display: none;
+}
+
+body.lang-en .content[lang="en"],
+body.lang-es .content[lang="es"] {
+    display: block;
+}
+
+/* Idioma por defecto: Español */
+body:not(.lang-en):not(.lang-es) .content[lang=\"es\"] {
+    display: block;
+}
+
+/* Efectos de tarjetas */
+.card-shadow {
+    box-shadow: 0 10px 15px -3px rgba(100, 70, 50, 0.1), 0 4px 6px -2px rgba(100, 70, 50, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-shadow:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(100, 70, 50, 0.2), 0 10px 10px -5px rgba(100, 70, 50, 0.04);
+}
+
+/* Botones */
+.btn-primary {
+    /* Applying a deep shadow and a defined bottom border for a 3D effect */
+    /* Updated for a more pronounced, box-like appearance that lifts off the page */
+    background-color: #926E51; /* wood-bg */
+    color: white;
+    padding: 0.75rem 1.5rem; /* px-6 py-3 */
+    border-radius: 20px; /* rounded-full */
+    font-weight: 600; /* font-semibold */
+    text-transform: uppercase; /* uppercase */
+    font-size: 0.875rem; /* text-sm */
+    letter-spacing: 0.05em; /* tracking-wider */
+    transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s, border-bottom 0.1s;
+
+    /* 3D Effect: deep shadow and thick bottom border */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+    border-bottom: 4px solid #7B4C29; /* wood-text dark accent */
+}
+
+.btn-primary:hover {
+    background-color: #7B4C29; /* wood-text (darker wood) */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.btn-primary:active {
+    transform: translateY(2px); /* Pushes the button down */
+    border-bottom-width: 2px; /* Reduces the bottom border for a "pressed" look */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* Softens shadow when pressed */
+}
+
+
+/* Estilos del carrusel */
+.carousel {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-images {
+    position: relative;
+    height: 18rem;
+}
+
+.carousel-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    object-fit: cover;
+}
+
+.carousel-image.active {
+    opacity: 1;
+}
+
+.carousel-prev, .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #7B4C29;
+    z-index: 10;
+    border-radius: 50%;
+}
+
+.carousel-prev:hover, .carousel-next:hover {
+    background-color: white;
+}
+
+.carousel-prev {
+    left: 0.5rem;
+}
+
+.carousel-next {
+    right: 0.5rem;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 10;
+}
+
+.dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: white;
+}

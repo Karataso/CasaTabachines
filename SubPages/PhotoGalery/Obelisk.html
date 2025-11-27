@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Fotos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        /* Estilos específicos para la galería */
+        .gallery-grid {
+            display: grid;
+            gap: 20px;
+            /* Diseño responsivo con un mínimo de 300px por columna */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 1rem;
+            border: 4px solid #B8A188;
+            box-shadow: 0 10px 15px -3px rgba(100, 70, 50, 0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 20px 25px -5px rgba(100, 70, 50, 0.2);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            min-height: 250px; /* Asegura una altura mínima */
+            display: block;
+        }
+
+        /* --- Estilos del Lightbox/Modal --- */
+        .lightbox-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none; /* No interactuable cuando está oculto */
+            transition: opacity 0.3s ease;
+        }
+        .lightbox-modal.active {
+            opacity: 1;
+            pointer-events: auto; /* Interactuable cuando está activo */
+        }
+        .lightbox-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            padding: 0px;
+            box-sizing: border-box;
+            border-radius: 1.5rem;
+            border: 8px solid #B8A188;
+            background-color: #1a1a1a;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            border-radius: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        /* Botón de cierre posicionado fuera del contenido */
+        .lightbox-close {
+            position: absolute;
+            top: 5vh;
+            right: 5vw;
+            color: white;
+            background-color: #A0522D;
+            border: 3px solid white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.2s;
+            z-index: 1001;
+        }
+        .lightbox-close:hover {
+            background-color: #8B4513;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="lang-en min-h-screen">
+    <header class="bg-white/95 backdrop-blur-sm shadow-sm sticky top-0 z-50 border-b border-amber-200">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <a href="../../intex.html" class="flex items-center space-x-2">
+                    <div class="w-8 h-8 rounded-full wood-bg flex items-center justify-center">
+                        <i class="fas fa-home text-white text-sm"></i>
+                    </div>
+                    <h1 class="text-xl font-bold wood-text tracking-tight">Casa Tabachines</h1>
+                </a>
+            </div>
+            <button id="lang-toggle" class="px-3 py-1.5 text-xs wood-text border border-amber-300 rounded-full hover:bg-amber-50 transition duration-150 flex items-center space-x-1" onclick="toggleLanguage()">
+                <i class="fas fa-language text-sm"></i>
+                <span class="content" lang="en">Español</span>
+                <span class="content" lang="es">English</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 md:px-8 py-16">
+        <h2 id="gallery-title" class="text-4xl font-extrabold text-center mb-12 wood-text">
+            <span class="content" lang="en">Photo Gallery: [Bungalow Name Placeholder]</span>
+            <span class="content" lang="es">Galería de Fotos: [Placeholder Nombre del Bungalow]</span>
+        </h2>
+
+        <div id="gallery-container" class="gallery-grid">
+            </div>
+
+        <p id="loading-message" class="text-center text-xl wood-text mt-8">
+            <span class="content" lang="en">Loading photos...</span>
+            <span class="content" lang="es">Cargando fotos...</span>
+        </p>
+
+    </main>
+
+    <footer class="wood-bg/90 text-amber-900 mt-12 py-6 text-center">
+        <div class="container mx-auto px-4">
+            <p class="text-sm mb-2">&copy; 2025 Casa Tabachines. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <div id="lightbox-modal" class="lightbox-modal">
+        <span class="lightbox-close" id="lightbox-close"><i class="fas fa-times"></i></span>
+        <div class="lightbox-content" id="lightbox-content">
+            <img src="" alt="Imagen Ampliada" id="lightbox-image">
+        </div>
+    </div>
+    <script>
+        // ==========================================================
+        // CONFIGURACIÓN (ADAPTAR PARA OBELISCO O BUGAMBILIA)
+        // ==========================================================
+        const BUNGALOW_NAME = "Obelisco";
+        const IMAGE_PATH_PREFIX = "../../images/Obelisco/";
+        const MAX_IMAGE_COUNT = 15; // Número máximo de imágenes a intentar cargar (ajustar según sea necesario)
+        const IMAGE_EXTENSION = ".webp";
+        // ==========================================================
+        // FIN DE CONFIGURACIÓN
+        // ==========================================================
+
+        // Referencias a elementos del modal
+        const modal = document.getElementById('lightbox-modal');
+        const modalContent = document.getElementById('lightbox-content');
+        const modalImage = document.getElementById('lightbox-image');
+        const closeModalButton = document.getElementById('lightbox-close');
+
+        // Función de cambio de idioma
+        function toggleLanguage() {
+            const body = document.body;
+            // Si el cuerpo tiene 'lang-en', lo cambia a español ('lang-es')
+            if (body.classList.contains('lang-en')) {
+                body.classList.remove('lang-en');
+                body.classList.add('lang-es');
+            } else {
+                // Si no tiene 'lang-en', asume que está en español y lo cambia a inglés ('lang-en')
+                body.classList.remove('lang-es');
+                body.classList.add('lang-en');
+            }
+        }
+
+        // --- Lógica del Modal/Lightbox ---
+
+        // Función para abrir el modal
+        function openModal(imageSrc) {
+            modalImage.src = imageSrc;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Evita el scroll del fondo
+        }
+
+        // Función para cerrar el modal
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = ''; // Restaura el scroll
+        }
+
+        // Event Listeners para cerrar el modal
+        closeModalButton.addEventListener('click', closeModal); // Cerrar con el botón 'X'
+
+        // Cerrar haciendo clic fuera del contenido de la imagen (en el fondo oscuro)
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Cerrar con la tecla ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        // --- Lógica de Carga de Galería ---
+
+        // Función para cargar la galería de imágenes
+        function loadGallery() {
+            const container = document.getElementById('gallery-container');
+            const loadingMessage = document.getElementById('loading-message');
+            let imagesLoaded = 0;
+
+            // Actualizar el título
+            const titleElement = document.getElementById('gallery-title');
+            titleElement.querySelector('[lang="en"]').textContent = "Photo Gallery: Obelisk";
+            titleElement.querySelector('[lang="es"]').textContent = "Galería de Fotos: Obelisco";
+            document.title = "Galería de Fotos | " + BUNGALOW_NAME;
+
+            for (let i = 1; i <= MAX_IMAGE_COUNT; i++) {
+                const imgUrl = IMAGE_PATH_PREFIX + i + IMAGE_EXTENSION;
+
+                // Usamos un objeto Image para precargar y verificar si la imagen existe
+                const img = new Image();
+                img.onload = function() {
+                    // La imagen existe y se ha cargado correctamente
+                    imagesLoaded++;
+
+                    // Crear el elemento de la galería
+                    const galleryItem = document.createElement('div');
+                    galleryItem.className = 'gallery-item wood-accent';
+
+                    // Añadir evento click para abrir el modal
+                    galleryItem.addEventListener('click', () => {
+                        openModal(imgUrl);
+                    });
+
+                    // Añadir la imagen al contenedor
+                    galleryItem.appendChild(img);
+                    container.appendChild(galleryItem);
+
+                    // Ocultar mensaje de carga
+                    if (loadingMessage) {
+                        loadingMessage.classList.add('hidden');
+                    }
+                };
+
+                img.onerror = function() {
+                    // La imagen no existe o hubo un error, detenemos la búsqueda o mostramos error si es la primera
+                    if (i === 1 && imagesLoaded === 0) {
+                         loadingMessage.innerHTML = '<span class="content" lang="en">No photos found. Check IMAGE_PATH_PREFIX configuration.</span><span class="content" lang="es">No se encontraron fotos. Revisa la configuración de IMAGE_PATH_PREFIX.</span>';
+                         loadingMessage.classList.remove('hidden');
+                    }
+                };
+
+                // Intenta cargar la imagen
+                img.src = imgUrl;
+                img.alt = BUNGALOW_NAME + ' Photo ' + i;
+            }
+        }
+
+        // Ejecutar la función cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', loadGallery);
+    </script>
+</body>
+</html>
